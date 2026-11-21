@@ -724,7 +724,7 @@ if (!MONGO_URI) {
 mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('MongoDB Atlas connected successfully.');
-    app.listen(PORT, () => console.log(`Game Square Chess API running at http://localhost:${PORT}`));
+    app.listen(PORT, () => console.log(`Game Square Chess API running at PORT ${PORT}`));
   })
   .catch(error => {
     console.error('MongoDB connection failed:', error.message);
