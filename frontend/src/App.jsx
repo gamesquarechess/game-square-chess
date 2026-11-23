@@ -1,3 +1,5 @@
+import FounderSection from "./FounderSection";
+import MentorshipSlider from "./MentorshipSlider";
 import React, { useState, useEffect } from "react";
 import {
   Trophy,
@@ -23,6 +25,8 @@ import {
   Brain,
   Medal,
   LayoutDashboard,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 const API_URL =
@@ -1104,193 +1108,256 @@ function App() {
             </button>
           </div>
         </div>
+        <MentorshipSlider />
       </section>
     </>
   );
 
   // ABOUT PAGE
-  const AboutPage = () => (
-    <>
-      <section className="relative py-24 bg-slate-900 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img
-            src={galleryImages[1]}
-            alt="Chess pieces"
-            className="w-full h-full object-cover"
-          />
-        </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 text-center">
-          <p className="text-amber-400 uppercase tracking-[0.3em] text-sm font-bold mb-4">
-            About Our Academy
-          </p>
+  const AboutPage = () => {
+    // EDIT COACH DETAILS AND PHOTOS HERE
+    const coachProfiles = [
+      {
+        name: "MANOJ K",
+        designation: "Chess Coach & Tournament Organizer",
+        qualification: "AICF TRAINER | AICF ARBITER",
+        description: "Distinguished Chess Coach & Competitive Player",
+        image: "/images/coach-1.jpg",
+        achievements: [
+          "Chairman's Trophy Chess Tournament - Champion (2023)",
+          "PKIET Khel Utsav - Champion (2021-2022)",
+          "School Zonal Chess Tournaments (2018 & 2020)",
+          "G.N. Sivaprakasan Nadar Memorial Chess Tournament - District Runner (2015)",
+          "Viswanathan Anand Chess Championship - State Level Competitor (2014)",
+          "District & School-Level Chess Tournaments (2013-2016)",
+        ],
+      },
+      {
+        name: "COACH NAME 2",
+        designation: "Professional Chess Coach",
+        qualification: "YOUR TITLE / QUALIFICATION",
+        description: "Experienced Chess Coach & Competitive Player",
+        image: "/images/coach-2.jpg",
+        achievements: [
+          "Tournament Achievement 1 - Year",
+          "Tournament Achievement 2 - Year",
+          "Championship Achievement - Year",
+          "District Level Achievement - Year",
+        ],
+      },
+      {
+        name: "COACH NAME 3",
+        designation: "Chess Trainer & Player",
+        qualification: "YOUR TITLE / QUALIFICATION",
+        description: "Dedicated Chess Trainer",
+        image: "/images/coach-3.jpg",
+        achievements: [
+          "Tournament Achievement 1 - Year",
+          "Tournament Achievement 2 - Year",
+          "Championship Achievement - Year",
+          "Chess Competition Achievement - Year",
+        ],
+      },
+    ];
 
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
-            About <span className="text-amber-400">Game Square Chess</span>
-          </h1>
-
-          <p className="text-slate-300 max-w-2xl mx-auto text-lg leading-relaxed">
-            Building chess skills, developing champions, and bringing chess
-            enthusiasts together through learning and competition.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-20 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
-          <div>
-            <p className="text-amber-400 uppercase tracking-widest text-sm font-bold mb-4">
-              Who We Are
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
-              Growing Together Through Chess
-            </h2>
-
-            <p className="text-slate-400 leading-8 mb-5">
-              Game Square Chess is a chess-focused platform designed to bring
-              players, learners, and chess enthusiasts together. Our goal is to
-              create opportunities for players to learn, practise, participate
-              in tournaments, and improve their game.
-            </p>
-
-            <p className="text-slate-400 leading-8 mb-7">
-              Whether you are a beginner learning your first moves or an
-              experienced player preparing for competition, we aim to provide an
-              encouraging environment where every move is a learning
-              opportunity.
-            </p>
-
-            <button
-              onClick={() => changePage("tournaments")}
-              className="bg-amber-400 text-slate-950 px-7 py-4 rounded-xl font-bold hover:bg-amber-300 transition"
-            >
-              Explore Tournaments{" "}
-              <ArrowRight className="inline ml-2" size={18} />
-            </button>
+    return (
+      <>
+        {/* ABOUT HERO - EXISTING CONTENT */}
+        <section className="relative py-24 bg-slate-900 overflow-hidden">
+          <div className="absolute inset-0 opacity-20">
+            <img
+              src={galleryImages[1]}
+              alt="Chess pieces"
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          <img
-            src={galleryImages[2]}
-            alt="Chess board"
-            className="rounded-3xl w-full h-[420px] object-cover"
-          />
-        </div>
-      </section>
+          <div className="relative max-w-7xl mx-auto px-6 text-center">
+            <p className="text-amber-400 uppercase tracking-[0.3em] text-sm font-bold mb-4">
+              About Our Academy
+            </p>
 
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <SectionTitle
-            eyebrow="Our Purpose"
-            title="Mission & Vision"
-            description="The principles that guide our chess community."
-          />
+            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+              About <span className="text-amber-400">Game Square Chess</span>
+            </h1>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-slate-800 border border-slate-700 rounded-3xl p-9">
-              <Target className="text-amber-400 mb-6" size={40} />
+            <p className="text-slate-300 max-w-2xl mx-auto text-lg leading-relaxed">
+              Building chess skills, developing champions, and bringing chess
+              enthusiasts together through learning and competition.
+            </p>
+          </div>
+        </section>
 
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Our Mission
-              </h3>
+        <FounderSection />
 
-              <p className="text-slate-400 leading-8">
-                To encourage chess learning and participation by providing
-                opportunities for practice, skill development, friendly
-                competition, and tournament experiences.
+        {/* WHO WE ARE */}
+        <section className="py-20 bg-slate-950">
+          <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
+            <div>
+              <p className="text-amber-400 uppercase tracking-widest text-sm font-bold mb-4">
+                Who We Are
               </p>
+
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
+                Growing Together Through Chess
+              </h2>
+
+              <p className="text-slate-400 leading-8 mb-5">
+                Game Square Chess is a chess-focused platform designed to bring
+                players, learners, and chess enthusiasts together. Our goal is
+                to create opportunities for players to learn, practise,
+                participate in tournaments, and improve their game.
+              </p>
+
+              <p className="text-slate-400 leading-8 mb-7">
+                Whether you are a beginner learning your first moves or an
+                experienced player preparing for competition, we aim to provide
+                an encouraging environment where every move is a learning
+                opportunity.
+              </p>
+
+              <button
+                onClick={() => changePage("tournaments")}
+                className="bg-amber-400 text-slate-950 px-7 py-4 rounded-xl font-bold hover:bg-amber-300 transition"
+              >
+                Explore Tournaments{" "}
+                <ArrowRight className="inline ml-2" size={18} />
+              </button>
             </div>
 
-            <div className="bg-slate-800 border border-slate-700 rounded-3xl p-9">
-              <Eye className="text-amber-400 mb-6" size={40} />
+            <img
+              src={galleryImages[2]}
+              alt="Chess board"
+              className="rounded-3xl w-full h-[420px] object-cover"
+            />
+          </div>
+        </section>
 
-              <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
+        {/* MISSION AND VISION */}
+        <section className="py-20 bg-slate-900">
+          <div className="max-w-7xl mx-auto px-6">
+            <SectionTitle
+              eyebrow="Our Purpose"
+              title="Mission & Vision"
+              description="The principles that guide our chess community."
+            />
 
-              <p className="text-slate-400 leading-8">
-                To build a strong and supportive chess community that inspires
-                young talents, develops confident players, and creates
-                opportunities for chess enthusiasts.
-              </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-slate-800 border border-slate-700 rounded-3xl p-9">
+                <Target className="text-amber-400 mb-6" size={40} />
+
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Our Mission
+                </h3>
+
+                <p className="text-slate-400 leading-8">
+                  To encourage chess learning and participation by providing
+                  opportunities for practice, skill development, friendly
+                  competition, and tournament experiences.
+                </p>
+              </div>
+
+              <div className="bg-slate-800 border border-slate-700 rounded-3xl p-9">
+                <Eye className="text-amber-400 mb-6" size={40} />
+
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Our Vision
+                </h3>
+
+                <p className="text-slate-400 leading-8">
+                  To build a strong and supportive chess community that inspires
+                  young talents, develops confident players, and creates
+                  opportunities for chess enthusiasts.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="py-20 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-6">
-          <SectionTitle
-            eyebrow="What We Offer"
-            title="Our Approach to Chess"
-            description="We focus on helping players develop their knowledge and confidence."
-          />
+        {/* OUR APPROACH */}
+        <section className="py-20 bg-slate-950">
+          <div className="max-w-7xl mx-auto px-6">
+            <SectionTitle
+              eyebrow="What We Offer"
+              title="Our Approach to Chess"
+              description="We focus on helping players develop their knowledge and confidence."
+            />
 
-          <div className="grid md:grid-cols-3 gap-7">
-            {coaches.map((item, index) => (
-              <div
-                key={index}
-                className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center hover:border-amber-400/50 transition"
-              >
-                <item.icon className="text-amber-400 mx-auto mb-6" size={38} />
+            <div className="grid md:grid-cols-3 gap-7">
+              {coaches.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center hover:border-amber-400/50 transition"
+                >
+                  <item.icon
+                    className="text-amber-400 mx-auto mb-6"
+                    size={38}
+                  />
 
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {item.name}
-                </h3>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {item.name}
+                  </h3>
 
-                <p className="text-slate-400">{item.role}</p>
-              </div>
-            ))}
+                  <p className="text-slate-400">{item.role}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <SectionTitle
-            eyebrow="Our Values"
-            title="What Makes Chess Special?"
-          />
+        {/* OUR VALUES */}
+        <section className="py-20 bg-slate-900">
+          <div className="max-w-7xl mx-auto px-6">
+            <SectionTitle
+              eyebrow="Our Values"
+              title="What Makes Chess Special?"
+            />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Brain,
-                title: "Critical Thinking",
-                text: "Develop logical and analytical thinking.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Discipline",
-                text: "Build patience and focus through practice.",
-              },
-              {
-                icon: Medal,
-                title: "Achievement",
-                text: "Set goals and celebrate progress.",
-              },
-              {
-                icon: Users,
-                title: "Community",
-                text: "Learn, compete, and grow together.",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-slate-800 rounded-2xl p-7 border border-slate-700"
-              >
-                <item.icon className="text-amber-400 mb-5" size={32} />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: Brain,
+                  title: "Critical Thinking",
+                  text: "Develop logical and analytical thinking.",
+                },
+                {
+                  icon: ShieldCheck,
+                  title: "Discipline",
+                  text: "Build patience and focus through practice.",
+                },
+                {
+                  icon: Medal,
+                  title: "Achievement",
+                  text: "Set goals and celebrate progress.",
+                },
+                {
+                  icon: Users,
+                  title: "Community",
+                  text: "Learn, compete, and grow together.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-slate-800 rounded-2xl p-7 border border-slate-700"
+                >
+                  <item.icon className="text-amber-400 mb-5" size={32} />
 
-                <h3 className="text-white font-bold text-lg mb-2">
-                  {item.title}
-                </h3>
+                  <h3 className="text-white font-bold text-lg mb-2">
+                    {item.title}
+                  </h3>
 
-                <p className="text-slate-400 text-sm leading-6">{item.text}</p>
-              </div>
-            ))}
+                  <p className="text-slate-400 text-sm leading-6">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </>
-  );
+        </section>
+      </>
+    );
+  };
 
   // TOURNAMENTS PAGE
   const TournamentsPage = () => (
