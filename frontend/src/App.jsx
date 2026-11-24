@@ -1005,7 +1005,7 @@ function App() {
       <section className="relative min-h-[650px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="./public/bg-chess.jpeg"
+            src="./bg-chess.jpeg"
             alt="Chess board"
             className="w-full h-full object-cover"
           />
@@ -2038,7 +2038,7 @@ function App() {
           >
             {/* Chess Logo */}
             <img
-              src="/public/chess-logo.jpeg"
+              src="/chess-logo.jpeg"
               alt="Game Square Chess Logo"
               className="w-12 h-12 object-contain rounded-2xl"
             />
