@@ -1005,12 +1005,12 @@ function App() {
       <section className="relative min-h-[650px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={galleryImages[0]}
+            src="./public/bg-chess.jpeg"
             alt="Chess board"
             className="w-full h-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-slate-950/85" />
+          <div className="absolute " />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent" />
         </div>
 
@@ -1575,7 +1575,7 @@ function App() {
 
               {contactSent && (
                 <p className="text-green-400 text-center">
-                  Demo message submitted successfully!
+                  message sent successfully!
                 </p>
               )}
             </div>
@@ -2036,10 +2036,14 @@ function App() {
             onClick={() => changePage("home")}
             className="flex items-center gap-3 text-left"
           >
-            <div className="bg-amber-400 text-slate-950 p-2 rounded-xl">
-              <Crown size={24} />
-            </div>
+            {/* Chess Logo */}
+            <img
+              src="/public/chess-logo.jpeg"
+              alt="Game Square Chess Logo"
+              className="w-12 h-12 object-contain rounded-2xl"
+            />
 
+            {/* Academy Name */}
             <div>
               <span className="font-black text-xl tracking-tight text-white block leading-none">
                 GAME SQUARE
